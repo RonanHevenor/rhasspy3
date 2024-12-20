@@ -1,0 +1,12 @@
+programs:
+  mic:
+    arecord:
+      command: |
+        arecord -q -r 16000 -c 1 -f S16_LE -t raw -D default
+      adapter: |
+        mic_adapter_raw.py --rate 16000 --width 2 --channels 1
+
+pipelines:
+  default:
+    mic:
+      name: arecord
